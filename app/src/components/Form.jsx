@@ -149,11 +149,14 @@ class Form extends React.Component {
   };
 
   render() {
+    const onFormSubmit = (data) => {
+      console.log(data);
+    }
 
     const { handleSubmit, reset, pristine, submitting } = this.props;
     
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onFormSubmit)}>
         <Wrapper>
           <Field
             name="title"
@@ -282,12 +285,12 @@ class Form extends React.Component {
           <Field
             name="image"
             component={fileInput}
+            className="file"
             type="file"
             label="Image"
             accept=".jpg, .jpeg, .png"
             hint="Required size:1140px by 500px or larger.Max file size:2 megabytes"
-            onChange={this.onChange}
-          /> 
+          />  
           <SubmitBlock>
             <Button type="button" onClick={reset}>
               Clear Form

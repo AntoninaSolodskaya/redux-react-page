@@ -118,6 +118,12 @@ injectGlobal`
       width: 100%;
     }
   }
+  .file{
+    width: 80%;
+    @media(max-width: 450px) {
+      width: 100%;
+    }
+  }
   .ingrediant{
     width: 100%;
   }

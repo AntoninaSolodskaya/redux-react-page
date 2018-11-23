@@ -42,6 +42,7 @@ export const validate = values => {
   if (!values.amount) {
     errors.amount = 'Required'
   }
+ 
   return errors
 }
 

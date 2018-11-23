@@ -41,8 +41,18 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  // devServer: {
+  //   contentBase: './public',
+  //   hot: true,
+  // },
   devServer: {
     contentBase: './public',
     hot: true,
-  },
+    proxy: {
+        '/api': {
+            target: 'http://localhost:3000',
+            secure: false
+        }
+    }
+}
 };

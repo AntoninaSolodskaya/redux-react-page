@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@types/redux-form": "^7.4.10",
-    "axios": "^0.18.0",
     "css-loader": "^1.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "i18next": "^11.9.1",
