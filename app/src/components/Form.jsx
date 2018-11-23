@@ -4,8 +4,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { course, cuisine, skill } from '../data';
 import { validate, required } from './validation/index';
-import { renderField, renderTextarea, fileInput, step, ingredients, customInput, customStyles } from "./fields";
-import Select from 'react-select';
+import { renderField, renderTextarea, fileInput, step, ingredients, customInput } from "./fields";
 
 const Wrapper = styled.div`
   display: flex;
@@ -143,10 +142,6 @@ const WrapSelect = styled.div`
   margin-bottom: 20px;
 `;
 
-const CustomSelect = styled(Select)`
-  color: #000000;
-`;
-
 class Form extends React.Component {
 
   changeState = (name, value) => {
@@ -165,7 +160,6 @@ class Form extends React.Component {
             component={renderField}
             type="text"
             label="Recipe Title"
-            
           />
           <Block>
             <Label>Description</Label>
@@ -241,58 +235,42 @@ class Form extends React.Component {
           />
           <WrapSelect>
             <LabelSelect>Course</LabelSelect>
-            <Label>
-              <Field name="course" 
-                component={props =>
-                  <CustomSelect
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                    onBlur={() => props.input.onBlur(props.input.value)}
-                    options={course}
-                    placeholder="Choose..." 
-                    simpleValue
-                    defaultValue={course[2]}
-                    styles={customStyles}
-                  />
-                } 
-              />
-            </Label>
+            <Field name="course" component="select" style={{ fontSize: 17, padding: 8, borderRadius: 5, minWidth: 204 }}>
+              <option>Choose...</option>
+              {course.map(food => {
+                return (
+                  <option key={food} value={food}>
+                    {food}
+                  </option>
+                );
+              })}
+            </Field>
           </WrapSelect>
           <WrapSelect>
             <LabelSelect>Cuisine</LabelSelect>
-            <Label>
-              <Field name="cuisine" 
-                component={props =>
-                  <CustomSelect
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                    onBlur={() => props.input.onBlur(props.input.value)}
-                    options={cuisine}
-                    placeholder="Choose..." 
-                    simpleValue
-                    styles={customStyles}
-                  />
-                } 
-              />
-            </Label>
+             <Field name="cuisine" component="select" style={{ fontSize: 17, padding: 8, borderRadius: 5, minWidth: 204 }}>
+              <option>Choose...</option>
+              {cuisine.map(food => {
+                return (
+                  <option key={food} value={food}>
+                    {food}
+                  </option>
+                );
+              })}
+            </Field>
           </WrapSelect>
           <WrapSelect>
             <LabelSelect>Skill</LabelSelect>
-            <Label>
-              <Field name="skill" 
-                component={props =>
-                  <CustomSelect
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                    onBlur={() => props.input.onBlur(props.input.value)}
-                    options={skill}
-                    placeholder="Choose..." 
-                    simpleValue
-                    styles={customStyles}
-                  />
-                } 
-              />
-            </Label>
+            <Field name="skill" component="select" style={{ fontSize: 17, padding: 8, borderRadius: 5, minWidth: 204 }}>
+              <option>Choose...</option>
+              {skill.map(food => {
+                return (
+                  <option key={food} value={food}>
+                    {food}
+                  </option>
+                );
+              })}
+            </Field>
           </WrapSelect>
           <Field 
             name="tags"
@@ -308,6 +286,7 @@ class Form extends React.Component {
             label="Image"
             accept=".jpg, .jpeg, .png"
             hint="Required size:1140px by 500px or larger.Max file size:2 megabytes"
+            onChange={this.onChange}
           /> 
           <SubmitBlock>
             <Button type="button" onClick={reset}>

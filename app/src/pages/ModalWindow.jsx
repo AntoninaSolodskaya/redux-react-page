@@ -70,26 +70,26 @@ class ModalWindow extends React.Component {
     return (
       <Fragment>
         <ModalWrap
-        onClick={this.props.closeModal}
-        data-close
-      >
-        <Modal
-          onSubmit={this.handleSubmit}
+          onClick={this.props.closeModal}
+          data-close
         >
-          <BtnClose>
-            <Button
-              onClick={this.props.closeModal}
-              data-close
-            >
-              x
-            </Button>
-          </BtnClose>
-          <Title>Logo</Title>
-          <ButtonWrap>
-            <ModalForm onSubmit={this.submit}/>
-          </ButtonWrap>
-        </Modal>
-      </ModalWrap>
+          <Modal
+            onSubmit={this.handleSubmit}
+          >
+            <BtnClose>
+              <Button
+                onClick={this.props.closeModal}
+                data-close
+              >
+                x
+              </Button>
+            </BtnClose>
+            <Title>Logo</Title>
+            <ButtonWrap>
+                <ModalForm onSubmit={this.submit}/>
+            </ButtonWrap>
+          </Modal>
+        </ModalWrap>
       </Fragment>
     );
   }

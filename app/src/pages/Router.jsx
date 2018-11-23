@@ -73,7 +73,7 @@ injectGlobal`
     background: initial;
   }
   :root{
-    --main-bg-color: rgba(0, 0, 0, 0.6); 
+    --main-bg-color:  rgba(0, 0, 0, 0.6); 
     --main-color: #CD8D5F;
     --main-text-color: #ffffff;
   }

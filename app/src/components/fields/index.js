@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
 import { required } from '../validation/index';
-import Select from 'react-select';
 
 const Block = styled.div`
   width: 100%;
@@ -238,30 +237,6 @@ export const customInput = ({ input, type, className, meta: { touched, error } }
   </Wrapper> 
 );
 
-// export const course = ({ fields }) => {
-
-//   handleChange = (event) => {
-//     this.setState({value: event.target.value, isOpen: !this.state.isOpen});
-//     this.props.changeState(event.target.value);
-//   };
-
-//   return (
-//     <TextBlock>
-//       {fields.map((code, index) => (
-//       <Wrap key={index}>
-//         <Container>
-//           <Field
-//             name={code}
-//             component={Select}
-//             type="button"
-//           />
-//         </Container>
-//       </Wrap>
-//     ))}
-//     </TextBlock>
-//   )
-// }
-
 export const ingredients = ({ fields }) => (
   <TextBlock className="block">
     {fields.map((code,number, index) => (
@@ -299,37 +274,3 @@ export const ingredients = ({ fields }) => (
   </TextBlock>
 );
 
-export const SelectInput = (props) => {
-  const { children, input, options } = props
-  function handleInputChange({ value }) {
-    props.input.onChange(value)
-  }
-  return (
-    <Label>
-      {children}
-      <Select
-        clearable={false}
-        searchable={false}
-        options={options}
-        {...input}
-        onChange={handleInputChange}
-      />
-    </Label>
-  )
-}
-
-export const customStyles = {
-  control: (base, state) => ({
-    ...base,
-    backgroundColor: 'initial',
-    borderColor: state.isFocused ? "black" : "white",
-    boxShadow: state.isFocused ? null : null,
-  }),
-  option: (base, state) => ({
-    ...base,
-    backgroundColor: state.isSelected ? "gray" : "initial",
-    color: state.isSelected ? "white" : "initial" 
-  }),
-  placeholder: styles => ({ ...styles, color: 'white' }),
-
-};
